@@ -65,11 +65,14 @@
         "fixer": [
             "php-cs-fixer fix"
         ],
+        "code-style-check": [
+            "php-cs-fixer fix --dry-run --diff --stop-on-violation"
+        ],
         "analyse": [
             "phpstan analyse -c phpstan.neon"
         ],
         "qa": [
-            "@fixer",
+            "@code-style-check",
             "@analyse"
         ]
     },

@@ -15,13 +15,16 @@
         "symfony/yaml": "6.1.*"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.13"
+        "friendsofphp/php-cs-fixer": "^3.13",
+        "phpstan/extension-installer": "^1.2",
+        "phpstan/phpstan-symfony": "^1.2"
     },
     "config": {
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
             "symfony/flex": true,
-            "symfony/runtime": true
+            "symfony/runtime": true,
+            "phpstan/extension-installer": true
         },
         "optimize-autoloader": true,
         "preferred-install": {
@@ -62,8 +65,12 @@
         "fixer": [
             "php-cs-fixer fix"
         ],
+        "analyse": [
+            "phpstan analyse -c phpstan.neon"
+        ],
         "qa": [
-            "@fixer"
+            "@fixer",
+            "@analyse"
         ]
     },
     "conflict": {
